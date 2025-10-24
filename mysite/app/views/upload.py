@@ -73,7 +73,7 @@ class UpModelForm(BootStrapModelForm):
     bootstrap_exclude_fields = ['img']
 
     class Meta:
-        model = models.City
+        model = models.ImageUpload
         fields = "__all__"
 
 

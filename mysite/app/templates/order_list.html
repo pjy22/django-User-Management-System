@@ -3,17 +3,17 @@
 {% block content %}
     <div class="container">
         <div style="margin-bottom: 10px">
-            <input type="button" value="新建订单1" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-
-            <input id="btnAdd" type="button" value="新建订单2" class="btn btn-success">
+            <input id="btnAdd" type="button" value="新建订单" class="btn btn-success">
         </div>
 
         <!-- 订单列表 -->
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                订单列表
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    订单列表
+                </h3>
             </div>
 
             <!-- Table -->
@@ -50,7 +50,7 @@
         </div>
 
         <!-- 分页列表 -->
-        <ul class="pagination">
+        <ul class="pagination" style="float: right;">
             {{ page_string }}
         </ul>
 
@@ -97,7 +97,6 @@
 
             <div class="alert alert-danger alert-dismissible fade in" role="alert">
                 <h4>是否确定删除？</h4>
-                <p style="margin: 10px 0;"> 删除后，所有关联的相关数据都会被删除。</p>
                 <p style="text-align: right;">
                     <button id="btnConfirmDelete" type="button" class="btn btn-danger">确 定</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>

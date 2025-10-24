@@ -3,32 +3,26 @@
 {% block content %}
     <div class="container">
         <div style="margin-bottom: 10px">
-            <a class="btn btn-success" href="/user/model/form/add/">
+            <a class="btn btn-success" href="/image/add/">
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                新建用户
+                上传图片
             </a>
         </div>
         <div class="panel panel-primary">
-            <!-- Default panel contents -->
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                    用户列表
+                    图片列表
                 </h3>
             </div>
 
-            <!-- Table -->
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>姓名</th>
-                    <th>密码</th>
-                    <th>年龄</th>
-                    <th>余额</th>
-                    <th>入职时间</th>
-                    <th>性别</th>
-                    <th>所属部门</th>
+                    <th>标题</th>
+                    <th>图片</th>
+                    <th>上传时间</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -36,26 +30,24 @@
                 {% for obj in queryset %}
                     <tr>
                         <th>{{ obj.id }}</th>
-                        <td>{{ obj.name }}</td>
-                        <td>{{ obj.password }}</td>
-                        <td>{{ obj.age }}</td>
-                        <td>{{ obj.account }}</td>
-                        <td>{{ obj.create_time|date:"Y-m-d" }}</td>
-                        <td>{{ obj.get_gender_display }}</td>
-                        <td>{{ obj.depart.title }}</td>
+                        <td>{{ obj.title }}</td>
                         <td>
-                            <a class="btn btn-primary btn-xs" href="/user/{{ obj.id }}/edit/">编辑</a>
-                            <a class="btn btn-danger btn-xs" href="/user/{{ obj.id }}/delete/">删除</a>
+                            <img src="/media/{{ obj.img }}" alt="{{ obj.title }}" style="max-width: 100px; max-height: 100px;">
+                        </td>
+                        <td>{{ obj.create_time|date:"Y-m-d H:i:s" }}</td>
+                        <td>
+                            <a class="btn btn-danger btn-xs" href="/image/delete/?nid={{ obj.id }}">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
-
                 </tbody>
             </table>
         </div>
 
+        <!-- 分页列表 -->
         <ul class="pagination" style="float: right;">
             {{ page_string }}
         </ul>
     </div>
 {% endblock %}
+

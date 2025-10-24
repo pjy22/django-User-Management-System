@@ -112,10 +112,11 @@ class Boss(models.Model):
     img = models.CharField(verbose_name="头像", max_length=128)
 
 
-class City(models.Model):
-    """ 城市 """
-    name = models.CharField(verbose_name="名称", max_length=32)
-    count = models.IntegerField(verbose_name="人口")
+class ImageUpload(models.Model):
+    """ 图片上传 """
+    title = models.CharField(verbose_name="标题", max_length=64)
+    img = models.FileField(verbose_name="图片", upload_to='images/')
+    create_time = models.DateTimeField(verbose_name="上传时间", auto_now_add=True)
 
-    # 本质上数据库也是CharField，自动保存数据。
-    img = models.FileField(verbose_name="Logo", max_length=128, upload_to='city/')
+    def __str__(self):
+        return self.title

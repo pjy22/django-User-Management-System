@@ -18,13 +18,15 @@ from django.urls import path, re_path
 from django.views.static import serve
 from django.conf import settings
 
-from app.views import depart, user, pretty, admin, account, task, order, chart, upload,city
+from app.views import depart, user, pretty, admin, account, task, order, chart, upload, image, home
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
 
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
 
+    # 首页
+    path('', home.home),
 
     path('tt/', chart.tt),
     # 部门管理
@@ -83,7 +85,8 @@ urlpatterns = [
     path('upload/form/', upload.upload_form),
     path('upload/modal/form/', upload.upload_modal_form),
 
-    # 城市列表
-    path('city/list/', city.city_list),
-    path('city/add/', city.city_add),
+    # 图片上传
+    path('image/list/', image.image_list),
+    path('image/add/', image.image_add),
+    path('image/delete/', image.image_delete),
 ]
